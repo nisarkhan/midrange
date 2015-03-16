@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Client & Systems</h2>
+
+@section scripts {
+    <script src="~/Scripts/Controllers/dashboard/controller.js"></script>
+
+} 
+<div class="panel-body" ng-controller="dashboard">
+    <form name="form" class="form-horizontal" ng-validate="save(data)" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <br />
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Client:</label>
+                                    <div class="col-xs-6">
+                                        <input name="client" type="text" class="form-control" ng-model="data.client" placeholder="Client" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.client.$error.required">Enter client name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row form-group">
+                                    <label class="col-xs-6 control-label">Client Division:</label>
+                                    <div class="col-xs-6">
+                                        <select class="btn btn-white dropdown-label" name="type" ng-model="data.client_division" required>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Check">Check</option>
+                                            <option value="Money Order">Money Order</option>
+                                            <option value="Debit Card">Debit Card</option>
+                                            <option value="TEST">TEST</option>
+                                        </select>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.client_division.$error.required">Select a type.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row form-group">
+                                    <label class="col-xs-6 control-label">Client Cost Center:</label>
+                                    <div class="col-xs-6">
+                                        <select class="form-control" name="client_cost_center" ng-model="data.client_cost_center" required>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Check">Check</option>
+                                            <option value="Money Order">Money Order</option>
+                                            <option value="Debit Card">Debit Card</option>
+                                            <option value="TEST">TEST</option>
+                                        </select>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.client_cost_center.$error.required">Select a type.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">MS Name:</label>
+                                    <div class="col-xs-6">
+                                        <input name="ms_name" type="text" class="form-control" ng-model="data.ms_name" placeholder="MS Name" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.ms_name.$error.required">Enter MS name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">SBU/SDM:</label>
+                                    <div class="col-xs-6">
+                                        <textarea name="sbusdm" class="form-control" cols="3" rows="3" ng-model="data.sbusdm" placeholder="SBU/SDM" ng-required="true"></textarea>
+
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.sbusdm.$error.required">Enter username.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Alias:</label>
+                                    <div class="col-xs-6">
+                                        <ui-select multiple ng-model="data.colors" theme="select2" ng-disabled="disabled" style="width: 200px;">
+                                            <ui-select-match placeholder="Select colors...">{{$item}}</ui-select-match>
+                                            <ui-select-choices repeat="color in availableColorsList | filter:$select.search">
+                                                {{color}}
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        @*<p>Selected: {{application.state}}</p>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">MAC Address:</label>
+                                    <div class="col-xs-6">
+                                        <ui-select multiple ng-model="data.mac_address" theme="select2" ng-disabled="disabled" style="width: 200px;">
+                                            <ui-select-match placeholder="Select colors...">{{$item}}</ui-select-match>
+                                            <ui-select-choices repeat="mac_address in macaddress | filter:$select.search">
+                                                {{mac_address}}
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        @*<p>Selected: {{data.mac_address}}</p>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Number of CPUs:</label>
+                                    <div class="col-xs-6">
+                                        <input name="ms_name" type="text" class="form-control" ng-model="data.num_of_cpus" placeholder="# of CPUs" ng-mask="number" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.ms_name.$error.required">Enter MS name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Floor Location:</label>
+                                    <div class="col-xs-6">
+                                        <input name="ms_name" type="text" class="form-control" ng-model="data.floor_location" placeholder="Floor Location" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.ms_name.$error.required">Enter MS name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Management Tools:</label>
+                                    <div class="col-xs-6">
+                                        <input name="ms_name" type="text" class="form-control" ng-model="data.mgmt_tools" placeholder="Management Tools" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.ms_name.$error.required">Enter MS name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-right">
+            <div class="col-xs-12">
+                <button class="btn btn-default" type="submit">
+                    <span ng-if="$edit"> <i class="fa fa-refresh"></i>  Update Client System </span>
+                    <span ng-if="!$edit"> <i class="fa fa-plus"></i>  Add Client System </span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
